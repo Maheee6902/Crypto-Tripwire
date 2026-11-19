@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crypto-tripwire"
+version = "1.0.0"
+description = "Entropy-Based Ransomware Detection for Automated Volatile Evidence Capture and Incident Response"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "Mahesh Ravi"}
+]
+dependencies = [
+  "reportlab>=4.0,<5.0"
+]
+
+[project.optional-dependencies]
+windows_live = [
+  "watchdog>=4.0,<7.0",
+  "psutil>=5.9,<8.0"
+]
+dev = [
+  "pytest>=7.4,<9.0"
+]
+
+[project.scripts]
+crypto-tripwire = "crypto_tripwire.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["crypto_tripwire*"]

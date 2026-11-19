@@ -1,0 +1,68 @@
+{
+  "config_version": "1.0",
+  "monitored_roots": [
+    "watched_folder"
+  ],
+  "excluded_paths": [
+    "cases_output",
+    "logs",
+    "evaluation_results"
+  ],
+  "excluded_extensions": [
+    ".tmp_ct",
+    ".part_ct"
+  ],
+  "follow_symlinks_or_reparse": false,
+  "output_root": "cases_output",
+  "log_dir": "logs",
+  "observation_mode": "live_endpoint_monitoring",
+  "detector": {
+    "detection_mode": "format_aware_header_and_block",
+    "entropy_threshold": 7.2,
+    "count_threshold": 3,
+    "time_window_seconds": 5.0,
+    "cooldown_seconds": 3.0,
+    "burst_grouping_window_seconds": 2.0,
+    "coalesce_interval_ms": 150.0,
+    "min_file_size_bytes": 64,
+    "max_whole_file_bytes": 16777216,
+    "chunk_size_bytes": 4096,
+    "max_sampled_chunks": 16,
+    "read_retry_count": 2,
+    "read_retry_delay_ms": 25.0,
+    "pre_alert_buffer_size": 256,
+    "baseline_cache_max_entries": 2048,
+    "chunk_high_entropy_threshold": 7.2,
+    "min_high_entropy_chunk_fraction": 0.5,
+    "entropy_delta_threshold": 1.25,
+    "compressed_container_delta_margin": 0.2,
+    "threshold_provenance_label": "inherited_or_engineering_default_uncalibrated"
+  },
+  "capture": {
+    "collect_processes": true,
+    "collect_network": true,
+    "enable_ram_acquisition": false,
+    "ram_tool_executable": null,
+    "ram_tool_type": "winpmem",
+    "ram_timeout_seconds": 120.0,
+    "ram_min_free_disk_mb": 1024,
+    "imported_ram_image_path": null,
+    "imported_ram_provenance": null,
+    "enable_volatility": false,
+    "volatility_executable": null,
+    "volatility_plugins": [
+      "windows.pslist.PsList",
+      "windows.netscan.NetScan"
+    ],
+    "volatility_timeout_seconds": 90.0
+  },
+  "limits": {
+    "event_queue_max_size": 1024,
+    "incident_queue_max_size": 64,
+    "worker_threads": 1,
+    "report_wait_for_slow_providers_seconds": 5.0,
+    "polling_interval_ms": 100.0
+  },
+  "generate_html_report": true,
+  "generate_pdf_report": true
+}

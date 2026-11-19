@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+demo_watched_folder/
+demo_cases_output/
+demo_logs/
+cases_output/
+logs/
+watched_folder/
