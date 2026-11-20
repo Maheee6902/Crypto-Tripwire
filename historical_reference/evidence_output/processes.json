@@ -1,0 +1,881 @@
+{
+  "timestamp": "2026-09-18T12:20:46.494539Z",
+  "processes": [
+    {
+      "name": "System Idle Process",
+      "ppid": 0,
+      "create_time": "1970-01-01T05:30:00",
+      "pid": 0
+    },
+    {
+      "name": "System",
+      "ppid": 0,
+      "create_time": "2026-09-18T17:20:56.760376",
+      "pid": 4
+    },
+    {
+      "name": "Registry",
+      "ppid": 4,
+      "create_time": "2026-09-18T17:20:51.163665",
+      "pid": 124
+    },
+    {
+      "name": "fontdrvhost.exe",
+      "ppid": 764,
+      "create_time": "2026-09-18T17:21:01.932262",
+      "pid": 304
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.035982",
+      "pid": 416
+    },
+    {
+      "name": "smss.exe",
+      "ppid": 4,
+      "create_time": "2026-09-18T17:20:56.771903",
+      "pid": 448
+    },
+    {
+      "name": "SecurityHealthService.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:34.370412",
+      "pid": 484
+    },
+    {
+      "name": "fontdrvhost.exe",
+      "ppid": 692,
+      "create_time": "2026-09-18T17:21:01.932293",
+      "pid": 520
+    },
+    {
+      "name": "csrss.exe",
+      "ppid": 600,
+      "create_time": "2026-09-18T17:21:01.083801",
+      "pid": 608
+    },
+    {
+      "name": "wininit.exe",
+      "ppid": 600,
+      "create_time": "2026-09-18T17:21:01.276978",
+      "pid": 692
+    },
+    {
+      "name": "csrss.exe",
+      "ppid": 684,
+      "create_time": "2026-09-18T17:21:01.279924",
+      "pid": 700
+    },
+    {
+      "name": "RuntimeBroker.exe",
+      "ppid": 992,
+      "create_time": "2026-09-18T17:22:06.479888",
+      "pid": 724
+    },
+    {
+      "name": "winlogon.exe",
+      "ppid": 684,
+      "create_time": "2026-09-18T17:21:01.323900",
+      "pid": 764
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:23:05.745753",
+      "pid": 772
+    },
+    {
+      "name": "services.exe",
+      "ppid": 692,
+      "create_time": "2026-09-18T17:21:01.432177",
+      "pid": 836
+    },
+    {
+      "name": "lsass.exe",
+      "ppid": 692,
+      "create_time": "2026-09-18T17:21:01.506989",
+      "pid": 856
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:01.901392",
+      "pid": 992
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.068366",
+      "pid": 1008
+    },
+    {
+      "name": "dwm.exe",
+      "ppid": 764,
+      "create_time": "2026-09-18T17:21:02.188116",
+      "pid": 1068
+    },
+    {
+      "name": "powershell.exe",
+      "ppid": 8984,
+      "create_time": "2026-09-18T17:46:19.839605",
+      "pid": 1144
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.420024",
+      "pid": 1240
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.420050",
+      "pid": 1248
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.601895",
+      "pid": 1372
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.602116",
+      "pid": 1380
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.602239",
+      "pid": 1388
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.603355",
+      "pid": 1396
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.641430",
+      "pid": 1516
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.654812",
+      "pid": 1540
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.683429",
+      "pid": 1656
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:36:43.841898",
+      "pid": 1756
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.736849",
+      "pid": 1772
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.759951",
+      "pid": 1844
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.761528",
+      "pid": 1852
+    },
+    {
+      "name": "MemCompression",
+      "ppid": 4,
+      "create_time": "2026-09-18T17:21:02.800076",
+      "pid": 1932
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.808593",
+      "pid": 1980
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:23:44.481747",
+      "pid": 2004
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.832957",
+      "pid": 2036
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:42.864350",
+      "pid": 2064
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.857661",
+      "pid": 2068
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:23:45.524513",
+      "pid": 2088
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.868630",
+      "pid": 2100
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.901396",
+      "pid": 2168
+    },
+    {
+      "name": "WmiPrvSE.exe",
+      "ppid": 992,
+      "create_time": "2026-09-18T17:21:23.989972",
+      "pid": 2232
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.974403",
+      "pid": 2264
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.983288",
+      "pid": 2300
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.985612",
+      "pid": 2308
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:02.992445",
+      "pid": 2328
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.002626",
+      "pid": 2348
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:24:47.670671",
+      "pid": 2356
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.110290",
+      "pid": 2540
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.150322",
+      "pid": 2588
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.170323",
+      "pid": 2640
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.174538",
+      "pid": 2648
+    },
+    {
+      "name": "SecurityHealthSystray.exe",
+      "ppid": 6832,
+      "create_time": "2026-09-18T17:22:21.229024",
+      "pid": 2668
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.190534",
+      "pid": 2696
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.193060",
+      "pid": 2732
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.214102",
+      "pid": 2804
+    },
+    {
+      "name": "OpenConsole.exe",
+      "ppid": 8984,
+      "create_time": "2026-09-18T17:46:14.666390",
+      "pid": 2880
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.262166",
+      "pid": 2940
+    },
+    {
+      "name": "ShellExperienceHost.exe",
+      "ppid": 992,
+      "create_time": "2026-09-18T17:23:47.453798",
+      "pid": 2984
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.272011",
+      "pid": 2992
+    },
+    {
+      "name": "powershell.exe",
+      "ppid": 8984,
+      "create_time": "2026-09-18T17:46:16.101146",
+      "pid": 3004
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.276757",
+      "pid": 3020
+    },
+    {
+      "name": "OfficeClickToRun.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.280625",
+      "pid": 3048
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.284999",
+      "pid": 3060
+    },
+    {
+      "name": "SDXHelper.exe",
+      "ppid": 992,
+      "create_time": "2026-09-18T17:38:33.091902",
+      "pid": 3124
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.350556",
+      "pid": 3168
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.370456",
+      "pid": 3208
+    },
+    {
+      "name": "VGAuthService.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.375145",
+      "pid": 3220
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.395670",
+      "pid": 3232
+    },
+    {
+      "name": "vmtoolsd.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.429431",
+      "pid": 3248
+    },
+    {
+      "name": "vm3dservice.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:03.460258",
+      "pid": 3284
+    },
+    {
+      "name": "internet_detector.exe",
+      "ppid": 1396,
+      "create_time": "2026-09-18T17:22:33.905363",
+      "pid": 3520
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:06.266789",
+      "pid": 3524
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:05.551310",
+      "pid": 3560
+    },
+    {
+      "name": "vm3dservice.exe",
+      "ppid": 3284,
+      "create_time": "2026-09-18T17:21:03.642427",
+      "pid": 3564
+    },
+    {
+      "name": "python.exe",
+      "ppid": 7564,
+      "create_time": "2026-09-18T17:50:46.267868",
+      "pid": 3572
+    },
+    {
+      "name": "OpenConsole.exe",
+      "ppid": 8984,
+      "create_time": "2026-09-18T17:46:18.043944",
+      "pid": 3728
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:23:44.645100",
+      "pid": 3784
+    },
+    {
+      "name": "msedgewebview2.exe",
+      "ppid": 7696,
+      "create_time": "2026-09-18T17:21:47.081835",
+      "pid": 3880
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:23:06.161043",
+      "pid": 4152
+    },
+    {
+      "name": "dllhost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:04.163008",
+      "pid": 4212
+    },
+    {
+      "name": "vmtoolsd.exe",
+      "ppid": 6832,
+      "create_time": "2026-09-18T17:22:21.716924",
+      "pid": 4284
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:04.220361",
+      "pid": 4328
+    },
+    {
+      "name": "cmd.exe",
+      "ppid": 8984,
+      "create_time": "2026-09-18T17:22:19.877773",
+      "pid": 4340
+    },
+    {
+      "name": "WmiPrvSE.exe",
+      "ppid": 992,
+      "create_time": "2026-09-18T17:21:04.254219",
+      "pid": 4392
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:05.673578",
+      "pid": 4688
+    },
+    {
+      "name": "OpenConsole.exe",
+      "ppid": 8984,
+      "create_time": "2026-09-18T17:22:19.868368",
+      "pid": 4708
+    },
+    {
+      "name": "powershell.exe",
+      "ppid": 8984,
+      "create_time": "2026-09-18T17:46:18.051491",
+      "pid": 4768
+    },
+    {
+      "name": "msdtc.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:04.575033",
+      "pid": 4792
+    },
+    {
+      "name": "sihost.exe",
+      "ppid": 1516,
+      "create_time": "2026-09-18T17:21:43.272230",
+      "pid": 4808
+    },
+    {
+      "name": "notepad++.exe",
+      "ppid": 6832,
+      "create_time": "2026-09-18T17:39:16.033023",
+      "pid": 4880
+    },
+    {
+      "name": "OpenConsole.exe",
+      "ppid": 8984,
+      "create_time": "2026-09-18T17:46:19.829273",
+      "pid": 5064
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:23:06.481471",
+      "pid": 5068
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:48:17.651370",
+      "pid": 5188
+    },
+    {
+      "name": "SystemSettings.exe",
+      "ppid": 992,
+      "create_time": "2026-09-18T17:23:42.304965",
+      "pid": 5236
+    },
+    {
+      "name": "OpenConsole.exe",
+      "ppid": 8984,
+      "create_time": "2026-09-18T17:46:16.090992",
+      "pid": 5364
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:24.749627",
+      "pid": 5624
+    },
+    {
+      "name": "MoNotificationUx.exe",
+      "ppid": 9608,
+      "create_time": "2026-09-18T17:38:52.153064",
+      "pid": 5856
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:36:44.296928",
+      "pid": 6000
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:36:47.608647",
+      "pid": 6068
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:23:06.638553",
+      "pid": 6156
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:43.299096",
+      "pid": 6160
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:43.332433",
+      "pid": 6200
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:42:41.590929",
+      "pid": 6208
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:43.358678",
+      "pid": 6232
+    },
+    {
+      "name": "AppActions.exe",
+      "ppid": 992,
+      "create_time": "2026-09-18T17:31:51.320548",
+      "pid": 6240
+    },
+    {
+      "name": "RuntimeBroker.exe",
+      "ppid": 992,
+      "create_time": "2026-09-18T17:23:47.769693",
+      "pid": 6244
+    },
+    {
+      "name": "taskhostw.exe",
+      "ppid": 1396,
+      "create_time": "2026-09-18T17:21:43.391640",
+      "pid": 6276
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:43.485706",
+      "pid": 6408
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:43.496050",
+      "pid": 6432
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:43.700313",
+      "pid": 6616
+    },
+    {
+      "name": "python.exe",
+      "ppid": 4340,
+      "create_time": "2026-09-18T17:46:37.109630",
+      "pid": 6632
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:36:48.096353",
+      "pid": 6748
+    },
+    {
+      "name": "explorer.exe",
+      "ppid": 6804,
+      "create_time": "2026-09-18T17:21:43.960686",
+      "pid": 6832
+    },
+    {
+      "name": "ShellHost.exe",
+      "ppid": 4808,
+      "create_time": "2026-09-18T17:21:44.039064",
+      "pid": 6868
+    },
+    {
+      "name": "WmiPrvSE.exe",
+      "ppid": 992,
+      "create_time": "2026-09-18T17:48:17.461126",
+      "pid": 6904
+    },
+    {
+      "name": "msedgewebview2.exe",
+      "ppid": 3880,
+      "create_time": "2026-09-18T17:21:47.207023",
+      "pid": 6944
+    },
+    {
+      "name": "CrossDeviceResume.exe",
+      "ppid": 4808,
+      "create_time": "2026-09-18T17:21:44.267439",
+      "pid": 7016
+    },
+    {
+      "name": "npp.8.9.7.Installer.x64.exe",
+      "ppid": 9448,
+      "create_time": "2026-09-18T17:39:02.573999",
+      "pid": 7064
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:22:15.455743",
+      "pid": 7248
+    },
+    {
+      "name": "internet_detector.exe",
+      "ppid": 3520,
+      "create_time": "2026-09-18T17:22:36.142794",
+      "pid": 7288
+    },
+    {
+      "name": "NisSrv.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:32:11.364001",
+      "pid": 7360
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:45.196985",
+      "pid": 7456
+    },
+    {
+      "name": "powershell.exe",
+      "ppid": 8984,
+      "create_time": "2026-09-18T17:46:14.679860",
+      "pid": 7564
+    },
+    {
+      "name": "ZoomIt64.exe",
+      "ppid": 6832,
+      "create_time": "2026-09-18T17:22:25.978018",
+      "pid": 7660
+    },
+    {
+      "name": "SearchHost.exe",
+      "ppid": 992,
+      "create_time": "2026-09-18T17:21:45.861875",
+      "pid": 7696
+    },
+    {
+      "name": "StartMenuExperienceHost.exe",
+      "ppid": 992,
+      "create_time": "2026-09-18T17:21:45.869255",
+      "pid": 7704
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:46.241215",
+      "pid": 7980
+    },
+    {
+      "name": "UserOOBEBroker.exe",
+      "ppid": 992,
+      "create_time": "2026-09-18T17:21:46.405639",
+      "pid": 8076
+    },
+    {
+      "name": "OneDrive.Sync.Service.exe",
+      "ppid": 8896,
+      "create_time": "2026-09-18T17:25:21.358884",
+      "pid": 8304
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:48:49.070935",
+      "pid": 8308
+    },
+    {
+      "name": "msedgewebview2.exe",
+      "ppid": 3880,
+      "create_time": "2026-09-18T17:21:48.274122",
+      "pid": 8516
+    },
+    {
+      "name": "msedgewebview2.exe",
+      "ppid": 3880,
+      "create_time": "2026-09-18T17:21:48.311013",
+      "pid": 8532
+    },
+    {
+      "name": "msedgewebview2.exe",
+      "ppid": 3880,
+      "create_time": "2026-09-18T17:21:48.389271",
+      "pid": 8652
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:23:06.320988",
+      "pid": 8736
+    },
+    {
+      "name": "msedgewebview2.exe",
+      "ppid": 3880,
+      "create_time": "2026-09-18T17:21:48.501039",
+      "pid": 8744
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:22:07.102231",
+      "pid": 8980
+    },
+    {
+      "name": "WindowsTerminal.exe",
+      "ppid": 10216,
+      "create_time": "2026-09-18T17:22:19.233752",
+      "pid": 8984
+    },
+    {
+      "name": "SearchIndexer.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:21:48.895563",
+      "pid": 9032
+    },
+    {
+      "name": "backgroundTaskHost.exe",
+      "ppid": 992,
+      "create_time": "2026-09-18T17:23:12.357291",
+      "pid": 9140
+    },
+    {
+      "name": "MsMpEng.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:32:00.017007",
+      "pid": 9292
+    },
+    {
+      "name": "ApplicationFrameHost.exe",
+      "ppid": 992,
+      "create_time": "2026-09-18T17:23:42.305574",
+      "pid": 9644
+    },
+    {
+      "name": "MpDefenderCoreService.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:32:01.376640",
+      "pid": 9844
+    },
+    {
+      "name": "ctfmon.exe",
+      "ppid": 2168,
+      "create_time": "2026-09-18T17:22:00.290282",
+      "pid": 9920
+    },
+    {
+      "name": "svchost.exe",
+      "ppid": 836,
+      "create_time": "2026-09-18T17:22:01.376949",
+      "pid": 10108
+    }
+  ]
+}
