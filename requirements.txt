@@ -1,7 +1,3 @@
-# Core reporting dependency (verified compatible with Python 3.10 - 3.12)
-# Core pipeline also includes a pure-stdlib PDF/poller/procfs fallback when optional libraries are absent.
-reportlab>=4.0,<5.0
-
-# Recommended live OS monitoring and volatile snapshot libraries for Windows 10/11 & Linux
 watchdog>=4.0,<7.0
 psutil>=5.9,<8.0
+reportlab>=4.0,<5.0

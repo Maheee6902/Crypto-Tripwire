@@ -1,73 +1,100 @@
-# Crypto-Tripwire: Entropy-Based Ransomware Detection for Automated Volatile Evidence Capture and Incident Response
+# Crypto-Tripwire: Entropy-Based Ransomware Detection & Automated 4-Phase DFIR Pipeline
 
 **Author:** Mahesh Ravi (`AM.SC.P2CSN25010`)  
-**Program:** M.Tech Cybersecurity Systems and Networks (Semester 3 Minor Project)  
+**Program:** M.Tech Cybersecurity Systems and Networks  
 **Institution:** Center for Cybersecurity Systems and Networks, Amrita Vishwa Vidyapeetham, Amritapuri Campus  
 **Project Guide:** Sreelakshmi R Syam  
 
 ## 1. What the Project Does
 
-**Crypto-Tripwire** is an automated four-phase Digital Forensics and Incident Response (DFIR) pipeline for Windows and Linux endpoints. It monitors target folders for high-entropy file encryption bursts and automatically captures volatile forensic evidence before the offending process exits:
+**Crypto-Tripwire** is a lightweight, four-phase Digital Forensics and Incident Response (DFIR) pipeline written in Python. It continuously monitors user directories (`Desktop`, `Documents`, `Downloads`, `Pictures`, `Videos`, `Music`) for rapid high-entropy file encryption bursts and automatically executes forensic evidence capture, SHA-256 verification, timeline analysis, and incident report generation without human intervention:
 
-1. **Phase 1 - Format-Aware Header & Entropy Detection Trigger (`crypto_tripwire/entropy.py`, `crypto_tripwire/detector.py`):**
-   - Watches target directories for file creation, modification, move, and delete events via a non-blocking queue.
-   - Checks the file's leading magic header signature (`PK` `0x504B0304` for `.zip`/`.docx`/`.xlsx`, `%PDF-` for `.pdf`, `PNG` `0x89504E47` for `.png`, `7z`, `Rar!`), samples up to `16 x 4 KiB` (`64 KiB` max) blocks, compares block entropy against each file's prior baseline (`BaselineStore`), and filters duplicate OS save notifications (`150 ms`).
-   - Suppresses normal `.zip` and `.pdf` saves while catching both full encryption and partial header encryption. When `3` distinct files spike within `5.0 s`, Phase 1 triggers Phase 2.
-2. **Phase 2 - Automated Volatile Evidence Capture (`crypto_tripwire/capture.py`):**
-   - Creates a unique timestamped case folder (`cases_output/case_<UTC>_<seq>_<uid>/`).
-   - Saves the trigger event (`trigger.json`), recent file events (`pre_alert_events.json`), running processes (`processes.json`), active network sockets (`network.json`), and optional physical RAM acquisition metadata (`memory_acquisition.json`).
-   - Writes all evidence files atomically (`fsync` + `os.replace`) and records their SHA-256 hashes in `manifest.json`.
-3. **Phase 3 - Rule-Based Evidence Extraction and Timeline Reconstruction (`crypto_tripwire/timeline.py`):**
-   - Independently recalculates SHA-256 hashes (`verify_case_manifest()` -> `verification.json`) to detect tampering before parsing.
-   - Normalizes all timestamps to UTC (`timeline.json`) and evaluates deterministic forensic rules (`CT-R000` to `CT-R006` -> `findings.json`).
-4. **Phase 4 - Automated Incident Report Generation (`crypto_tripwire/reporting.py`):**
-   - Sanitizes untrusted filenames and command lines (`html.escape` / `xml_escape`) and compiles three reports in the case directory: `incident_report.json`, `incident_report.html`, and an A4 printable `incident_report.pdf`.
+1. **Phase 1 (`phase1_monitor.py`) - Format-Aware Entropy Detection:** Inspects file magic headers (`PK` `0x504B0304`, `%PDF-`, `PNG`, `7z`, `Rar!`), samples up to `16 x 4 KiB` (`64 KiB` cap) blocks, filters duplicate OS save events (`150 ms`), suppresses benign compressed files (`0` false alarms), and automatically triggers Phase 2 when `3` distinct files spike past `7.2 bits/byte` within `5.0 s`.
+2. **Phase 2 (`phase2_capture.py`) - Automated Volatile Evidence Capture:** Creates a timestamped folder inside `cases_output/`, captures active running processes (`processes.json`) and live network sockets (`network.json`), writes all files atomically (`fsync`), and records their SHA-256 digests in `manifest.json`.
+3. **Phase 3 (`phase3_analyze.py`) - Chain-of-Custody Verification & Rule Engine:** Recomputes every artifact's SHA-256 hash (`verification.json`), normalizes event timestamps into a chronological UTC timeline (`timeline.json`), and evaluates deterministic forensic rules `CT-R000` to `CT-R006` (`findings.json`).
+4. **Phase 4 (`phase4_report.py`) - Automated Incident Reporting:** Sanitizes untrusted filenames/command lines (`html.escape`) and compiles three analyst-ready reports: `incident_report.json`, `incident_report.html`, and A4 `incident_report.pdf`.
 
-## 2. Architectural Block Diagram & Code Structure
+## 2. Why the Project Is Useful
 
-![Architectural Block Diagram](docs/architecture_block_diagram.png)
+- **Beats the Volatile Evidence Window:** Ransomware often finishes encrypting files and exits within seconds, before an analyst can manually collect process or socket evidence. Crypto-Tripwire triggers capture automatically in milliseconds.
+- **Eliminates Common False Positives & Catches Partial Encryption:** Naive entropy scripts raise false alarms on normal `.zip`/`.pdf` saves and miss modern intermittent ransomware that encrypts only file headers. Checking magic headers alongside `4 KiB` block entropy solves both problems while capping reads at `64 KiB` per file for speed.
+- **Tamper-Evident & Analyst-Ready:** Every artifact is hashed with SHA-256 before analysis and compiled directly into browser-viewable HTML and printable A4 PDF reports.
 
-| File / Module | Phase / Role | Key Classes & Functions | Inputs | Outputs |
+## 3. Architectural Block Diagram & Module Summary
+
+![Architectural Block Diagram](architecture_block_diagram.png)
+
+| File | Phase | Key Functions | Inputs | Outputs |
 | :--- | :--- | :--- | :--- | :--- |
-| `main.py` / `crypto_tripwire/cli.py` | CLI Entry Point | `main()`, `cmd_monitor()`, `cmd_verify()`, `cmd_analyze()` | CLI flags or `--config <path.json>` | Live monitoring, manifest verification, or case analysis |
-| `crypto_tripwire/config.py` | Configuration | `AppConfig`, `DetectorSettings`, `CaptureSettings`, `ResourceLimits` | `configs/default_config.json` | Validated config object + canonical SHA-256 digest |
-| `crypto_tripwire/models.py` | Data Models | `EntropyMeasurement`, `TriggerRecord`, `TimelineEvent`, `FindingRecord` | Raw measurements and artifact metadata | JSON-serializable dataclasses |
-| `crypto_tripwire/entropy.py` | Phase 1 (Entropy & Magic Headers) | `compute_shannon_entropy()`, `detect_magic_header_format()`, `BaselineStore`, `EntropyAnalyzer.measure_file()` | File path on disk | `EntropyMeasurement` (magic header status, `16 x 4 KiB` block entropies, baseline delta) |
-| `crypto_tripwire/detector.py` | Phase 1 (Watcher & Burst Trigger) | `AsyncFilesystemMonitor`, `BurstDetectionEngine.process_notification()` | OS filesystem notifications (`watchdog` or `os.stat` poller) | Filters `150 ms` duplicates, tracks `3 files / 5.0 s`, emits `TriggerRecord` |
-| `crypto_tripwire/capture.py` | Phase 2 (Volatile Capture & SHA-256) | `EvidenceCaptureCoordinator.capture_case()`, `ProcessProvider`, `NetworkProvider`, `verify_case_manifest()` | `TriggerRecord` and pre-alert buffer | `trigger.json`, `processes.json`, `network.json`, `manifest.json`, `verification.json` |
-| `crypto_tripwire/timeline.py` | Phase 3 (Timeline & Rule Engine) | `TimelineReconstructor.reconstruct()`, `parse_iso_to_utc()`, `_evaluate_rules()` | Case folder + `VerificationReport` | `timeline.json` and `findings.json` (`CT-R000` to `CT-R006`) |
-| `crypto_tripwire/reporting.py` | Phase 4 (Report Generator) | `IncidentReportGenerator.generate_case_reports()`, `_render_html()`, `_render_pdf()` | Case JSON artifacts | `incident_report.json`, `incident_report.html`, `incident_report.pdf` |
-| `crypto_tripwire/pipeline.py` | Pipeline Coordinator | `CryptoTripwirePipeline.start()`, `execute_incident_workflow()`, `analyze_existing_case_directory()` | `AppConfig` + Phase 1 trigger callback | Runs Phase 1 on watcher thread and Phases 2-4 on worker thread |
-| `scripts/extract_case_metrics.py` | Case Metrics Summary | `extract_case_metrics()` | Case directory or `cases_output/` | Prints timing, integrity, and finding summaries |
+| `phase1_monitor.py` | Phase 1 | `detect_magic_header()`, `analyze_file_blocks()`, `shannon_entropy()`, `main()` | Monitored user folders (live OS events) | `trigger_payload` dict (automatically calls Phases 2-4) |
+| `phase2_capture.py` | Phase 2 | `collect_processes()`, `collect_network()`, `write_json_atomic()`, `run_phase2_capture()` | `trigger_payload`, `output_root` | `cases_output/<case_id>/` (`trigger.json`, `processes.json`, `network.json`, `manifest.json`) |
+| `phase3_analyze.py` | Phase 3 | `verify_manifest()`, `is_external_ip()`, `run_phase3_analyze()` | `case_dir` + `manifest.json` | `verification.json`, `timeline.json`, `findings.json` (`CT-R000` to `CT-R006`) |
+| `phase4_report.py` | Phase 4 | `_render_html()`, `_render_pdf()`, `run_phase4_report()` | `case_dir` + Phase 3 results | `incident_report.json`, `incident_report.html`, `incident_report.pdf` |
+| `simulate_entropy_spike.py` | Test Harness | `get_candidate_folders()`, `main()` | Random user folders | Safe benign ZIP + 25% header & 100% full spikes (auto-erases all decoys) |
 
-## 3. Requirements
+## 4. Requirements
 
-- **Operating System:** Windows 10/11 or Linux.
-- **Python Version:** Python `3.10`, `3.11`, or `3.12`.
-- **Dependencies (`requirements.txt`):** `reportlab`, `watchdog`, `psutil`.
+- **OS:** Windows 10/11 or Linux
+- **Python:** Python `3.10` or higher
+- **Libraries (`requirements.txt`):**
+  - `watchdog>=4.0,<7.0` (native OS file watcher; includes built-in `os.stat` poller fallback)
+  - `psutil>=5.9,<8.0` (live process and network socket enumeration)
+  - `reportlab>=4.0,<5.0` (A4 PDF incident report generation)
 
-## 4. Quick Start on Windows Host
+## 5. Quick Start (Run on Default Settings in < 30 Seconds)
 
 ```powershell
+git clone https://github.com/AmritaCSN/Crypto-Tripwire.git
+cd Crypto-Tripwire
 python -m venv .venv
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-### Run the 16 Automated Tests
-```powershell
-python -m unittest discover -s tests -v
-```
+Open **two terminals** in VS Code:
+- **Terminal 1 (Start Live Monitoring Across All User Folders):**
+  ```powershell
+  python phase1_monitor.py --open-report
+  ```
+- **Terminal 2 (Run Safe Multi-Folder Entropy-Spike Simulation):**
+  ```powershell
+  python simulate_entropy_spike.py
+  ```
 
-### Start Live Folder Monitoring
-```powershell
-python -m crypto_tripwire monitor --config configs/default_config.json
-```
+Terminal 1 suppresses the benign `.zip` (`0` alerts), catches both the 25% header spike and 100% full-file spike across random user folders, automatically runs Phases 2, 3, and 4, and opens `incident_report.html`. Terminal 2 automatically deletes all temporary decoy files afterward.
 
-### Verify Integrity or Re-Analyze an Existing Case
-```powershell
-python -m crypto_tripwire verify-case historical_reference/evidence_output
-python -m crypto_tripwire analyze-case historical_reference/evidence_output --output-dir ./demo_case_out
-python scripts/extract_case_metrics.py historical_reference/evidence_output
-```
+## 6. Advanced Usage - Parameters, Arguments & Tuning Examples
+
+### A. Command-Line Arguments
+
+1. **`phase1_monitor.py`:**
+   - `--watch <dir1> <dir2> ...`: Override the default user folders and watch specific directories only.
+     ```powershell
+     python phase1_monitor.py --watch C:\Users\mahes\Documents C:\Users\mahes\Desktop
+     ```
+   - `--output <path>`: Save captured forensic case folders to a custom directory (default: `./cases_output`).
+     ```powershell
+     python phase1_monitor.py --output D:\ForensicCases --open-report
+     ```
+   - `--open-report`: Automatically opens the generated `incident_report.html` in the default web browser after Phase 4 finishes.
+
+2. **`simulate_entropy_spike.py`:**
+   - `--dirs <dir1> <dir2> ...`: Restrict temporary decoy drops to specific folder(s) instead of all standard user folders.
+     ```powershell
+     python simulate_entropy_spike.py --dirs C:\Users\mahes\Documents
+     ```
+   - `--cleanup-delay <seconds>`: Seconds to wait after the burst before automatically erasing temporary decoy files (default: `3.0`).
+     ```powershell
+     python simulate_entropy_spike.py --cleanup-delay 5.0
+     ```
+
+### B. Adjustable Detection Constants (`phase1_monitor.py`)
+
+| Constant | Default | How to Adjust & Example |
+| :--- | :--- | :--- |
+| `ENTROPY_THRESHOLD` | `7.2` | Shannon entropy cutoff in `bits/byte` (`[0, 8]`). Raise to `7.5` for stricter alerts or lower to `7.0` for higher sensitivity. |
+| `COUNT_THRESHOLD` | `3` | Distinct high-entropy files needed to trigger Phase 2. Raise to `5` on busy shared workstations. |
+| `TIME_WINDOW_SECONDS` | `5.0` | Sliding burst window in seconds. Increase to `10.0` to catch slower throttling ransomware. |
+| `COOLDOWN_SECONDS` | `3.0` | Seconds before Phase 1 re-arms after an alert. Increase to `10.0` to space out repeated captures. |
+| `CHUNK_SIZE` / `MAX_CHUNKS` | `4096` / `16` | Block sampling cap (`16 x 4 KiB = 64 KiB` max read per file). Increase `MAX_CHUNKS` to `32` for deeper sampling on multi-megabyte files. |
