@@ -7,7 +7,7 @@
 
 ## 1. What the Project Does
 
-**Crypto-Tripwire** is a low-latency, four-phase Digital Forensics and Incident Response (DFIR) pipeline matching our ICITSIF 2027 paper. It monitors user directories (`Desktop`, `Documents`, `Downloads`, `Pictures`, `Videos`, `Music`) for ransomware file-encryption bursts and automatically captures volatile evidence before the offending process exits:
+**Crypto-Tripwire** is a low-latency, four-phase Digital Forensics and Incident Response (DFIR) pipeline . It monitors user directories (`Desktop`, `Documents`, `Downloads`, `Pictures`, `Videos`, `Music`) for ransomware file-encryption bursts and automatically captures volatile evidence before the offending process exits:
 
 1. **Phase 1 (`crypto_tripwire/entropy.py`, `detector.py`, `phase1_monitor.py`) - Format-Aware Magic-Header & Block-Entropy Trigger:** Checks file magic headers (`PK` `0x504B0304`, `%PDF-`, `PNG`, `7z`, `Rar!`), samples up to `16 x 4 KiB` (`64 KiB` cap) blocks, tracks per-file baselines (`BaselineStore`), filters `150 ms` duplicate OS saves, and triggers Phase 2 when `3` distinct files spike past `7.2 bits/byte` within `5.0 s`.
 2. **Phase 2 (`crypto_tripwire/capture.py`) - Automated Volatile Evidence Capture:** Creates a timestamped case folder (`cases_output/case_<UTC>_<seq>_<uid>/`), saves `trigger.json`, `pre_alert_events.json`, running processes (`processes.json`), active network sockets (`network.json`), and optional WinPmem physical RAM metadata (`memory_acquisition.json`), writing every file atomically (`fsync`) with SHA-256 digests in `manifest.json`.
